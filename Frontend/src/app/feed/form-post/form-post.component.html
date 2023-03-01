@@ -1,0 +1,64 @@
+<div class="d-flex flex-justify-content-between flex-align-items-center mb-20">
+    <h2 class="fs-30">create a post</h2>
+
+    <button aria-label="Annuler la création"><mat-icon (click)="closeTab()">cancel</mat-icon></button>
+</div>
+
+<form [formGroup]="postForm" id="form">
+    <label for="categorie">
+        <select class="w100 p-15" formControlName="categorie" name="categorie" id="categorie">
+            <option value="">Please choose a category</option>
+            <option *ngFor="let categorie of categories" value="{{ categorie.categoriesId }}">
+                {{ categorie.name }}
+            </option>
+        </select>
+    </label>
+
+    <div>
+        <label class="charLength-input" for="title">
+            <input
+                type="text"
+                class="form-control"
+                id="title"
+                placeholder="title"
+                formControlName="title"
+                (input)="setValue($event)"
+                maxlength="70"
+            />
+            <span class="charLength-input__number">{{ leftCharLength }}</span>
+        </label>
+
+        <div *ngIf="url" class="image-wrapper">
+            <img class="image-wrapper__img w100 h100" [src]="url" />
+            <mat-icon (click)="removeFile()" class="image-wrapper__cross">highlight_off</mat-icon>
+        </div>
+        <div *ngIf="url === ''" class="form-group">
+            <label for="text"></label>
+            <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="what do you mean ?"
+                formControlName="content"
+                maxlength="1000"
+            ></textarea>
+        </div>
+    </div>
+    <div>
+        <label *ngIf="url === ''" for="file" class="label-file mb-10 fw-700 p-15" id="label"
+            >or choose an image</label
+        >
+        <input
+            appChangeStopPropagation
+            #fileinput
+            type="file"
+            class="d-none"
+            id="file"
+            formControlName="file"
+            (change)="addFile($event)"
+        />
+    </div>
+
+    <button [disabled]="postForm.invalid" (click)="createPost()" class="btn" type="submit">Publish</button>
+</form>

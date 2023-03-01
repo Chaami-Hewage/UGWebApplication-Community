@@ -1,0 +1,112 @@
+<div *ngIf="loading" class="spinner">
+    <span class="loader loader-quart"></span>
+</div>
+
+<ng-container *ngIf="content$ | async as content">
+    <p class="mt-30 p-15" *ngIf="!loading && content.length <= 0">No content in this section...</p>
+
+    <article *ngFor="let post of content; let index = index" class="post-card">
+        <div class="post-card h100 mb-30">
+            <div class="post-card__header d-flex flex-justify-content-between flex-align-items-center mb-10">
+                <div class="post-card__header__info d-flex flex-align-items-center">
+                    <img
+                        class="post-card__header__info__image"
+                        [src]="post.profile_picture_location"
+                        alt="Photo de profil de {{ post.lastname }}"
+                    />
+                    <div class="post-card__header__content d-flex">
+                        <div>
+                            <div class="fs-14">
+                                <p>{{ post.firstname | titlecase }} {{ post.lastname | titlecase }}</p>
+                            </div>
+                            <div class="fs-10 fw-300">
+                                <p>{{ post.created_datetime | calculDate }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    *ngIf="userid == post.users_id || user?.role !== 3"
+                    class="post-card__header__interaction"
+                >
+                    <button
+                        class="post-card__header__interaction--spread"
+                        [matMenuTriggerFor]="menu"
+                        aria-label="Example icon-button with a menu"
+                    >
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+                        <button
+                            class="d-flex flex-justify-content-center flex-align-items-center"
+                            mat-menu-item
+                            (click)="modifyPost(post)"
+                        >
+                            <mat-icon>edit</mat-icon>
+                            <span>Modifier</span>
+                        </button>
+                        <button
+                            class="d-flex flex-justify-content-center flex-align-items-center"
+                            mat-menu-item
+                            (click)="onDelete(post, index)"
+                        >
+                            <mat-icon>delete</mat-icon>
+                            <span>remove</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </div>
+            <div class="post-card__content">
+                <p class="post-card__content__title">{{ post.title }}</p>
+                <img
+                    class="post-card__content__image w100"
+                    *ngIf="post.content.includes('post_picture'); else other_content"
+                    [src]="post.content"
+                    alt="photo du post"
+                />
+                <ng-template #other_content>
+                    <p class="post-card__content__text">{{ post.content }}</p>
+                </ng-template>
+            </div>
+            <div
+                *ngIf="childComponentRef.nbComments > 0 || post.nbLike > 0"
+                class="post-card__information d-flex flex-justify-content-between flex-align-items-center fs-14"
+            >
+                <div
+                    *ngIf="post.nbLike > 0"
+                    class="post-card__information__like d-flex flex-align-items-center"
+                >
+                    <img src="../../../assets/images/thumb.png" alt="Like" />
+                    <p>{{ post.nbLike }}</p>
+                </div>
+
+                <p
+                    *ngIf="childComponentRef.nbComments > 0"
+                    (click)="showComment($event)"
+                    class="post-card__information__commentary"
+                >
+                    {{ childComponentRef.nbComments + " comments" }}
+                </p>
+            </div>
+            <div class="post-card__interaction d-flex flex-align-items-center">
+                <span class="post-card__interaction__span" (click)="onLike(post, index)">
+                    <i
+                        [ngClass]="{ 'fas liked': post.isLiked == 1, far: post.isLiked == 0 }"
+                        class="like fa-thumbs-up fa-lg"
+                    ></i
+                    >J'aime</span
+                >
+
+                <span class="post-card__interaction__span" (click)="showComment($event)">
+                    <i class="fa-regular fa-comment"></i>
+                    Commenter</span
+                >
+            </div>
+            <app-comment-list #childComponentRef [threadId]="post.threads_id" class="d-none">
+            </app-comment-list>
+        </div>
+    </article>
+</ng-container>
+<div *ngIf="loadingScroll" class="spinner bottom-spinner">
+    <span class="loader loader-quart"></span>
+</div>

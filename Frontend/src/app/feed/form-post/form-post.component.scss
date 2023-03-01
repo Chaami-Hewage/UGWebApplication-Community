@@ -1,0 +1,64 @@
+@use "../../../styles/Utils/breakpoints" as *;
+@use "../../../styles/Utils/index" as *;
+
+.charLength-input {
+    position: relative;
+
+    &__number {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--background-darkest);
+    }
+}
+
+.image-wrapper {
+    position: relative;
+
+    &__img {
+        max-height: 400px;
+        object-fit: cover;
+    }
+
+    &__cross {
+        position: absolute;
+        cursor: pointer;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+// .mat-dialog-container {
+//     background-color: var(--background-white);
+// }
+
+::ng-deep.mat-dialog-container {
+    background-color: var(--background-white);
+}
+
+::ng-deep.mat-dialog-container select {
+    background-color: var(--input-background);
+    color: var(--color_text-title);
+}
+
+::ng-deep.mat-dialog-container input {
+    background-color: var(--input-background);
+    color: var(--color_text-title);
+}
+
+::ng-deep.mat-dialog-container textarea {
+    background-color: var(--input-background);
+    color: var(--color_text-title);
+}
+
+::ng-deep.mat-dialog-container textarea::placeholder {
+    color: var(--color_text-title);
+}
+
+::ng-deep.mat-dialog-container input::placeholder {
+    background-color: var(--input-background);
+    color: var(--color_text-title);
+}

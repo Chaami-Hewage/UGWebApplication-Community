@@ -1,0 +1,99 @@
+<mat-tab-group>
+    <mat-tab class="profile-tab" label="Profile">
+        <div class="profile-tab__header mt-30 d-flex flex-justify-content-center flex-align-items-center">
+            <div class="profile-tab__header__avatar">
+                <img class="profile-tab__header__avatar__image" *ngIf="url" [src]="url" />
+            </div>
+            <div>
+                <label for="file" class="label-file p-15">choose a picture</label>
+                <input type="file" class="d-none" id="file" (change)="onselectFile($event)" />
+            </div>
+        </div>
+        <h2 class="profile-tab__title mt-20 mb-20">personal information</h2>
+        <form [formGroup]="profilForm">
+            <div class="d-flex flex-column">
+                <label for="firstname">first name</label>
+                <input
+                    [value]="user.firstname"
+                    type="text"
+                    class="form-control"
+                    id="firstname"
+                    placeholder="first name"
+                    formControlName="firstname"
+                    name="firstname"
+                />
+            </div>
+
+            <div class="d-flex flex-column secondInput">
+                <label for="lastname">Last name</label>
+                <input
+                    [value]="user.lastname"
+                    type="text"
+                    class="form-control"
+                    id="lastname"
+                    placeholder="Name"
+                    formControlName="lastname"
+                    name="lastname"
+                />
+            </div>
+
+            <button type="submit" class="btn" (click)="saveProfil()">register</button>
+        </form>
+    </mat-tab>
+    <mat-tab class="security-tab" label="Security">
+        <h2 class="security-tab__title">change the password</h2>
+        <form [formGroup]="passwordForm" class="passwordForm">
+            <div class="d-flex flex-column">
+                <label for="oldpassword">current password</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="oldpassword"
+                    placeholder="current password"
+                    formControlName="oldpassword"
+                    name="oldpassword"
+                />
+            </div>
+            <hr class="mt-20 mb-20" />
+            <div class="d-flex flex-column">
+                <label for="newpassword">new password</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="newpassword"
+                    placeholder="new password"
+                    formControlName="newpassword"
+                    name="newpassword"
+                />
+            </div>
+            <div class="errorMsg mb-10" *ngIf="newpassword.errors?.['passwordStrength']">
+                The password must contain at least one uppercase, one lowercase and one digit
+            </div>
+            <div>
+                <label for="confirmNewpassword">Confirm new password</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="confirmNewpassword"
+                    placeholder="Confirm new password"
+                    formControlName="confirmNewpassword"
+                    name="confirmNewpassword"
+                />
+            </div>
+            <div class="errorMsg mb-10" *ngIf="confirmNewpassword.errors?.['passwordMismatch']">
+                Passwords do not match
+            </div>
+            <button (click)="onSubmit()" type="submit" class="btn btn-save">register</button>
+        </form>
+        <p class="errorMsg" *ngIf="errorMsg">{{ errorMsg }}</p>
+    </mat-tab>
+    <mat-tab class="delete-tab" label="Account" class="deleteUser">
+        <h2 class="delete-tab__title">delete account</h2>
+        <p class="delete-tab__message">
+            If you continue, your profile and account information will be completely deleted.
+            However, if you change your mind, know that you will not be able to recover it
+
+        </p>
+        <button (click)="deleteUser()" class="btn btn-delete">delete</button>
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,10 @@
+<div class="create-post p-20">
+    <div class="create-post__image">
+        <img class="avatar" *ngIf="user" src="{{ user.imgUser }}" alt="" />
+    </div>
+    <div (click)="displayForm()" class="create-post__texte w100 p-15">
+        <p class="fs-16 fw-300">what's up {{ user?.firstname }} ?</p>
+    </div>
+</div>
+
+<app-post-list></app-post-list>

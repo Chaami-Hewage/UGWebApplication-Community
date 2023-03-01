@@ -1,0 +1,33 @@
+@use "../Utils/" as *;
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @extend %flex-center;
+
+    .loader {
+        @include center-logo(75px, 75px, 75px);
+        border: 5px solid transparent;
+        border-top-color: var(--primary);
+        border-bottom-color: var(--primary);
+        @include borderRadius(100px, 100px, 100px, 100px);
+        z-index: 100;
+        animation: 800ms linear infinite Turn;
+
+        &::after {
+            @include pseudo-el;
+            @include absolute-el(10px, 10px, 10px, 10px, 0%, 0%);
+            border-radius: 100%;
+            border: 5px solid transparent;
+            border-left-color: var(--secondary);
+            border-right-color: var(--secondary);
+            opacity: 0.4;
+        }
+    }
+}
+
+.bottom-spinner {
+    top: 102%;
+}

@@ -1,0 +1,67 @@
+<div *ngIf="loading" class="spinner">
+    <span class="loader loader-quart"></span>
+</div>
+<ng-container>
+    <article class="comment-card" *ngFor="let comment of comment$ | async; let index = index">
+        <div class="comment-card__content">
+            <div class="comment-card__content__information">
+                <div class="d-flex flex-align-items-center comment-card__content__information__user">
+                    <img
+                        class="comment-card__image"
+                        [src]="comment.profile_picture_location"
+                        alt="Photo de profil de {{ comment.lastname }}"
+                    />
+
+                    <p class="ml-10">
+                        {{ comment.firstname | titlecase }} {{ comment.lastname | titlecase }}
+                    </p>
+                </div>
+                <div class="comment-card__content__information__content">
+                    <img
+                        class="content__picture"
+                        *ngIf="comment.content.includes('comment_picture'); else other_content"
+                        [src]="comment.content"
+                        alt="photo du commentaire"
+                    />
+                    <ng-template #other_content>
+                        <p>{{ comment.content }}</p>
+                    </ng-template>
+                </div>
+                <p class="comment-card__content__information__like d-flex" *ngIf="comment.nbLike > 0">
+                    <img src="../../../assets/images/thumb.png" alt="Like" />{{ comment.nbLike }}
+                </p>
+            </div>
+
+            <div class="comment-card__footer d-flex">
+                <span
+                    class="post-card-interaction-like"
+                    (click)="onLike(comment, index)"
+                    [ngClass]="{
+                        liked: comment.isLike == 1
+                    }"
+                    >I like</span
+                >
+
+                <div *ngIf="userid == comment.users_id || user?.role !== 3">
+                    <span (click)="deleteComment(comment)">delete</span>
+                </div>
+                <div class="">
+                    <p>{{ comment.created_datetime | calculDate }}</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <div
+        class="show-more-comments"
+        *ngIf="nbComments > currentPage * pageSize"
+        (click)="displayMoreComment()"
+    >
+        View more comments
+    </div>
+
+    <app-form-comments
+        (display)="updateComments($event)"
+        [threadId]="threadId"
+        [comment$]="comment$"
+    ></app-form-comments>
+</ng-container>

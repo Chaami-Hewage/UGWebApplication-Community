@@ -1,0 +1,42 @@
+<div class="create-comment">
+    <div class="create-comment__image-user">
+        <img class="avatar" *ngIf="user" src="{{ user.imgUser }}" alt="" />
+    </div>
+    <form [formGroup]="commentForm" class="create-comment__form">
+        <div class="create-comment__form__content">
+            <div class="image-wrapper">
+                <img class="ImagePreview" *ngIf="urlCommentFile" [src]="urlCommentFile" />
+            </div>
+            <label for="content"></label>
+            <textarea
+                *ngIf="urlCommentFile === ''"
+                id="content"
+                placeholder="Your comment— ?"
+                formControlName="content"
+            ></textarea>
+        </div>
+        <div class="create-comment__form__interaction">
+            <label for="file" class="label-file">
+                <svg
+                    width="58"
+                    height="51"
+                    viewBox="0 0 58 51"
+                    fill="blue"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="svg"
+                >
+                    <path
+                        d="M22.0445 0H35.9555C38.3004 0 40.3734 1.49758 41.1098 3.71789L42.2879 7.25H50.75C54.7488 7.25 58 10.5012 58 14.5V43.5C58 47.4988 54.7488 50.75 50.75 50.75H7.25C3.24551 50.75 0 47.4988 0 43.5V14.5C0 10.5012 3.24551 7.25 7.25 7.25H15.7121L16.8902 3.71789C17.6266 1.49758 19.6996 0 22.0445 0ZM29 39.875C35.0039 39.875 39.875 35.0039 39.875 29C39.875 22.8941 35.0039 18.125 29 18.125C22.8941 18.125 18.125 22.8941 18.125 29C18.125 35.0039 22.8941 39.875 29 39.875Z"
+                        fill="#fd2d01"
+                    />
+                </svg>
+            </label>
+            <div class="displayBtn">
+                <input #commentinput type="file" class="input-file" id="file" (change)="selectFile($event)" />
+
+                <button class="btn" (click)="cancel()">cancel</button>
+                <button class="btn btn-orange" type="submit" (click)="onSubmit(threadId)">Publsh</button>
+            </div>
+        </div>
+    </form>
+</div>

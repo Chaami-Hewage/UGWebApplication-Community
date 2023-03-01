@@ -1,0 +1,33 @@
+@use "../../../styles/Utils/breakpoints" as *;
+@use "../../../styles/Utils/index" as *;
+
+.create-post {
+    width: 600px;
+    background-color: var(--background-white);
+    border-radius: 10px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    @include lg {
+        width: 100%;
+    }
+}
+
+.create-post__image {
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.create-post__texte {
+    margin-left: 20px;
+    background-color: var(--input-background);
+    border-radius: 50px;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--background-dark);
+    }
+}

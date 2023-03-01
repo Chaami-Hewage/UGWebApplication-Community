@@ -1,0 +1,13 @@
+.label-file {
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--primary);
+    display: block;
+
+    &:hover {
+        background-color: var(--tertiary);
+    }
+}

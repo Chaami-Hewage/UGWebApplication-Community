@@ -1,0 +1,26 @@
+@mixin center-logo($width, $height, $lineHeight) {
+    width: $width;
+    height: $height;
+    line-height: $lineHeight;
+}
+
+//-----------------------------------------------------------------
+@mixin borderRadius($top: 25px, $right: 25px, $bottom: 25px, $left: 25px) {
+    border-radius: $top $right $bottom $left;
+}
+
+@mixin pseudo-el($display: block, $pos: absolute, $content: "") {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin absolute-el($top, $right, $bottom, $left, $x, $y) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    transform: translate($x, $y);
+}
+//

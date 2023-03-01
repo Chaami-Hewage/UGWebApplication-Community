@@ -1,0 +1,99 @@
+@use "../../styles/Utils/breakpoints" as *;
+
+.getStarted__logo {
+    margin: 100px 20px;
+    img {
+        width: 300px;
+    }
+    @include breakpoint(760px) {
+        margin: 30px;
+    }
+}
+
+.getStarted__logo__information {
+    width: 70%;
+    margin: 0 auto;
+    &__title {
+        color: var(--color_text-title);
+        font-size: 50px;
+
+        @include breakpoint(760px) {
+            font-size: 36px;
+        }
+    }
+}
+.getStarted__logo__information__picture {
+    @include breakpoint(760px) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .block-left {
+        margin: 0 50px;
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+        border: 1px solid var(--background-darkest);
+        position: relative;
+
+        @include breakpoint(760px) {
+            margin-bottom: 20px;
+        }
+
+        .camera {
+            font-size: 36px;
+            color: var(--color_text-title);
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            margin: 0;
+        }
+        .preview {
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .block-right {
+        &__label {
+            @include breakpoint(760px) {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        .input-file {
+            display: none;
+        }
+
+        &__defaultImage {
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        &__popup {
+            @include breakpoint(760px) {
+                justify-content: center;
+            }
+
+            &__image {
+                margin: 0 10px;
+                display: block;
+                width: 50px;
+                border-radius: 50%;
+                height: 50px;
+            }
+        }
+    }
+}
+
+.btn-next {
+    display: block;
+    width: 150px;
+
+    margin: 10px auto;
+}
+
+.btn-next[disabled] {
+    background-color: var(--background-dark);
+}

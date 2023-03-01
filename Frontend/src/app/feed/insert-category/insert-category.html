@@ -1,0 +1,28 @@
+<h2 class="fs-20">Insert a category</h2>
+<form [formGroup]="categoryForm" class="categories-form">
+    <div>
+        <label for="slug"></label>
+        <input
+            type="text"
+            class="categories-input"
+            id="name"
+            placeholder="category name"
+            formControlName="name"
+        />
+    </div>
+    <div>
+        <label for="name"></label>
+        <input
+            type="text"
+            class="categories-input"
+            id="slug"
+            placeholder="Slug of the category"
+            formControlName="slug"
+        />
+    </div>
+
+    <button (click)="createCategories()" class="btn categories-btn" type="submit">
+        <mat-icon class="categories-icon">publish</mat-icon>
+    </button>
+</form>
+<p class="errorMsg" *ngIf="errorMsg">{{ errorMsg }}</p>

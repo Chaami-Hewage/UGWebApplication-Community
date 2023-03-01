@@ -1,0 +1,63 @@
+<header class="header-sticky">
+    <nav class="p-20">
+        <div
+            class="d-flex flex-align-items-center flex-justify-content-between m-auto h100 maxW1440 responsive"
+        >
+            <div class="left-nav d-flex flex-align-items-center maxW1440">
+                <a aria-label="Retour page accueil" [routerLink]="'/accueil/feed/'">
+                    <picture class="left-nav__logo">
+<!--                        <source-->
+<!--                            srcset="../../../assets/images/icon-left-font.svg"-->
+<!--                            media="(min-width: 451px)"-->
+<!--                        />-->
+<!--                        <img class="left-nav__logo" src="../../../assets/images/logo.png" alt="logo" />-->
+                        <div style="font-size: 200%; color: red; justify-content: center; font-weight: bold;">
+                            <img src="../../assets/images/icon_above-front_1.png" alt="example" style="justify-content:center; height: 8%; width: 8%;"/>
+                            Community
+                        </div>
+                    </picture>
+                </a>
+            </div>
+            <app-insert-category
+                *ngIf="user?.role !== 3"
+                class="middle-nav-insert-category"
+            ></app-insert-category>
+            <div class="right-nav d-flex flex-align-items-center">
+                <div class="right-nav__logo">
+                    <mat-icon *ngIf="user?.role !== 3" class="icon">settings</mat-icon>
+
+                    <a [routerLink]="['/accueil/users']"><mat-icon class="icon">groups</mat-icon></a>
+
+                    <button aria-label="Changer le theme">
+                        <mat-icon aria *ngIf="dark" (click)="toggleDarkTheme()" class="icon"
+                            >dark_mode</mat-icon
+                        >
+                    </button>
+
+                    <button aria-label="Change the theme">
+                        <mat-icon *ngIf="!dark" (click)="toggleDarkTheme()" class="icon">light_mode</mat-icon>
+                    </button>
+                    <button aria-label="Logout">
+                        <mat-icon class="icon" (click)="logOut()">logout</mat-icon>
+                    </button>
+                    <button aria-label="edit profile">
+                        <img
+                            (click)="displayProfil()"
+                            class="right-nav__avatar"
+                            *ngIf="user"
+                            src="{{ user.imgUser }}"
+                            alt=""
+                        />
+                    </button>
+                </div>
+
+                <!-- <div>
+                    <mat-icon (click)="toggleBox()" class="icon burger">{{
+                        isMenuOpen ? "close" : "menu"
+                    }}</mat-icon>
+                </div> -->
+                <!-- <div></div> -->
+            </div>
+        </div>
+    </nav>
+</header>

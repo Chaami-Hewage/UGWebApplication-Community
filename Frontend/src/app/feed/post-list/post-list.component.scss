@@ -1,0 +1,144 @@
+@use "../../../styles/Utils/breakpoints" as *;
+
+.post-card {
+    margin: 40px auto;
+    position: relative;
+    width: 600px;
+    background-color: var(--background-white);
+    border-radius: 10px;
+    @include lg {
+        width: 100%;
+    }
+}
+
+.post-card__header {
+    padding: 30px 20px 0 10px;
+
+    &__info {
+        &__image {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+    }
+    &__interaction {
+        position: relative;
+
+        &--spread {
+            border-radius: 50%;
+            padding: 5px;
+            border: none;
+            display: flex;
+            align-items: center;
+
+            mat-icon {
+                margin-left: 0;
+            }
+            &:hover {
+                border-radius: 50%;
+                background-color: #e5e5e5;
+            }
+        }
+    }
+}
+
+.post-card__content {
+    color: var(--text-post);
+    &__title {
+        margin-bottom: 10px;
+        word-wrap: break-word;
+        padding: 0 10px;
+    }
+    &__image {
+        height: 400px;
+        object-fit: cover;
+        border-top: 1px solid var(--background-light);
+        border-bottom: 1px solid var(--background-light);
+    }
+
+    &__text {
+        margin: 0 10px;
+        word-wrap: break-word;
+    }
+}
+
+.post-card__information {
+    height: 50px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--background-light);
+    &__like {
+        img {
+            width: 25px;
+            height: 25px;
+            margin-right: 5px;
+        }
+    }
+    &__commentary {
+        margin-left: auto;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.post-card__interaction {
+    height: 50px;
+
+    &__span {
+        cursor: pointer;
+        // padding: 15px;
+        margin: 5px;
+        display: flex;
+        height: 80%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 50%;
+        text-align: center;
+
+        i {
+            margin-right: 10px;
+        }
+
+        .commentIcon {
+            transform: scale(1.1);
+        }
+
+        &:hover {
+            background-color: var(--background-light);
+        }
+    }
+}
+
+.modal-modification {
+    padding: 10px;
+    border: 1px solid var(--background-darkest);
+    border-radius: 10px;
+    background-color: var(--background-white);
+    position: absolute;
+    top: 0px;
+    right: 40px;
+
+    span {
+        cursor: pointer;
+        display: flex;
+
+        margin: 10px;
+
+        mat-icon {
+            margin-right: 5px;
+            margin-left: 0;
+        }
+    }
+}
+
+.liked {
+    color: var(--secondary);
+}
+
+.mat-menu-item .mat-icon {
+    margin-left: 0;
+}

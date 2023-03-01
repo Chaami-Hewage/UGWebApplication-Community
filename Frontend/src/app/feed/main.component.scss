@@ -1,0 +1,60 @@
+@use "../../styles/Utils/breakpoints" as *;
+
+
+
+
+.wrapper {
+    max-width: 1440px;
+    position: relative;
+
+    @include lg {
+        flex-direction: column;
+    }
+}
+
+.feed {
+    margin: 120px auto;
+    @include lg {
+        margin: 10px 20px;
+    }
+
+    @include sm {
+        margin: 0;
+    }
+}
+.category {
+    
+    margin-top: 120px;
+    height: auto;
+    background-color: var(--background-light);
+    @include lg {
+        height: 80px;
+        display: block;
+    }
+
+    @include sm {
+        height: 0;
+    }
+}
+
+.scrollTop {
+    height: 50px;
+    width: 50px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+
+    .iconTop {
+        margin: 0;
+        color: white;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+

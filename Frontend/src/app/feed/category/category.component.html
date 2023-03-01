@@ -1,0 +1,16 @@
+<div clickOutside (clickOutside)="clickedOutside()">
+    <div (click)="toggleBox()" class="categorie-menu-burger">
+        <mat-icon class="icon burger">{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
+    </div>
+
+    <div [class.is-open]="isMenuOpen" class="categorie p-30 h100">
+        <ul class="categorie__position">
+            <li class="categorie__liste mb-30"><a [routerLink]="['feed']">all the publications</a></li>
+            <div class="categorie__liste mb-20" *ngFor="let categorie of categories">
+                <li>
+                    <a [routerLink]="['feed/category/', categorie.slug]"> {{ categorie.name }}</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>

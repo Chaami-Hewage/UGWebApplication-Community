@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="getStarted__logo">
+        <picture class="logo">
+            <source srcset="../../assets/images/icon-left-font.svg" media="(min-width: 426px)" />
+            <img src="../../assets/images/icon_above-front.png" alt="example" />
+        </picture>
+    </div>
+    <div class="getStarted__logo__information">
+        <h1 class="getStarted__logo__information__title">Welcome! Create your profile</h1>
+        <p class="fw-300 fs-24 mb-20">Let the others know you!</p>
+        <h2 class="mb-50">Add a profile picture</h2>
+        <div class="getStarted__logo__information__picture mb-50 d-flex flex-justify-content-center">
+            <div class="block-left d-flex flex-align-items-center flex-justify-content-center">
+                <mat-icon *ngIf="!url" class="camera">photo_camera</mat-icon>
+
+                <img class="preview w100 h100" *ngIf="url" [src]="url" />
+            </div>
+            <div class="block-right">
+                <div class="block-right__label">
+                    <label for="file" class="label-file p-15 fw-700">choose an image</label>
+                    <input type="file" class="input-file" id="file" (change)="onselectFile($event)" />
+                </div>
+                <p class="block-right__defaultImage" (click)="setPopup()">> Take our default image</p>
+                <div class="block-right__popup d-flex" *ngIf="popup === true">
+                    <img
+                        (click)="setFiles($event)"
+                        class="block-right__popup__image"
+                        src="http://localhost:3003/images/default_picture/Moutons.png"
+                        alt="lazy"
+                    />
+                    <img
+                        (click)="setFiles($event)"
+                        class="block-right__popup__image"
+                        src="http://localhost:3003/images/default_picture/nobodyface.png"
+                        alt="nobodyface"
+                    />
+                    <img
+                        (click)="setFiles($event)"
+                        class="block-right__popup__image"
+                        src="http://localhost:3003/images/default_picture/Paresseux.png"
+                        alt="sheep"
+                    />
+                </div>
+            </div>
+        </div>
+        <button [disabled]="url === ''" (click)="goToNextPage()" class="btn btn-next fs-16" type="submit">
+            next
+        </button>
+    </div>
+</div>

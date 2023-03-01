@@ -1,0 +1,15 @@
+<app-header> </app-header>
+<div class="wrapper d-flex m-auto">
+    <app-category class="category" [class.is-open]="isMenuOpen"></app-category>
+
+    <div class="feed">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div
+    #scrolltop
+    (click)="topPage()"
+    class="scrollTop d-flex flex-justify-content-center flex-align-items-center hidden"
+>
+    <mat-icon class="iconTop"> arrow_circle_up </mat-icon>
+</div>

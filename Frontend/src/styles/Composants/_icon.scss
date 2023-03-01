@@ -1,0 +1,18 @@
+@use "../Utils/index" as *;
+
+.mat-icon {
+    transform: scale(1.2);
+    color: var(--color_text-title);
+    margin-left: 20px;
+    cursor: pointer;
+
+    @include sm {
+        transform: scale((1));
+        margin-left: 10px;
+    }
+}
+
+.icon:hover {
+    color: var(--tertiary);
+    transition: all 0.2s ease;
+}

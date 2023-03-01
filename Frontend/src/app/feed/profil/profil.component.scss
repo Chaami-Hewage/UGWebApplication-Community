@@ -1,0 +1,95 @@
+@use "../../../styles/Utils/breakpoints" as *;
+@use "../../../styles/Utils/index" as *;
+
+.profile-tab {
+    margin: 15px 0;
+
+    &__header {
+        @include sm {
+            display: block;
+        }
+        &__avatar {
+            margin: 0 50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid var(--background-dark);
+            position: relative;
+
+            @include lg {
+                width: 75px;
+                height: 75px;
+            }
+            @include sm {
+                // width: 50px;
+                // height: 50px;
+                margin: 0 auto 20px;
+            }
+
+            &__image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &__title {
+        @include sm {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    }
+}
+
+.security-tab__title {
+    margin: 20px 0;
+    @include sm {
+        font-size: 18px;
+    }
+}
+
+.delete-tab {
+    &__title {
+        margin: 20px 0;
+        @include sm {
+            font-size: 18px;
+        }
+    }
+
+    &__message {
+        margin: 10px 0;
+    }
+}
+
+.btn-delete {
+    margin: 0 auto;
+    width: 30%;
+    display: block;
+    background-color: var(--primary);
+
+    @include sm {
+        width: 100%;
+    }
+}
+
+/* A CSS selector that is used to target the `mat-dialog-container` element. */
+
+::ng-deep .mat-dialog-container {
+    background-color: var(--background-white);
+    color: var(--color-text-title);
+}
+
+::ng-deep .mat-tab-label {
+    color: var(--color-text-title);
+}
+
+::ng-deep .mat-tab-label-active {
+    background-color: transparent !important;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: var(--primary);
+}

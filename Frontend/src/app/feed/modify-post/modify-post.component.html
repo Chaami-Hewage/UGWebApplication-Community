@@ -1,0 +1,71 @@
+<div class="d-flex flex-justify-content-between flex-align-items-center mb-20">
+    <h2>Edit Post</h2>
+    <button aria-label="Annuler la création"><mat-icon (click)="closeTab()">cancel</mat-icon></button>
+</div>
+
+<form [formGroup]="modifyForm" id="form">
+    <label for="categorie">
+        <select class="w100 p-15" formControlName="categorie" name="categorie" id="categorie">
+            <option value="">Please choose a category</option>
+            <option *ngFor="let categorie of categories" value="{{ categorie.categoriesId }}">
+                {{ categorie.name }}
+            </option>
+        </select>
+    </label>
+    <div>
+        <label class="charLength-input" for="title">
+            <input
+                type="text"
+                class="form-control"
+                id="title"
+                placeholder="Title"
+                formControlName="title"
+                maxlength="70"
+                (input)="setValue($event)"
+            />
+            <span class="charLength-input__number">{{ leftCharLength }}</span>
+        </label>
+
+        <div class="image-wrapper">
+            <img
+                *ngIf="urlFile != ''; else other_content"
+                class="image-wrapper__img w100 h100"
+                [src]="urlFile"
+                alt="post photo"
+            />
+            <mat-icon *ngIf="urlFile != ''" (click)="removeFile(0)" class="image-wrapper__cross"
+                >highlight_off</mat-icon
+            >
+
+            <ng-template #other_content>
+                <label for="text"></label>
+                <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    placeholder="post photo?"
+                    formControlName="content"
+                ></textarea>
+            </ng-template>
+        </div>
+    </div>
+    <div>
+        <label *ngIf="urlFile === ''" for="file" class="label-file mb-10 fw-700 p-15" id="label"
+            >or choose an image</label
+        >
+        <input
+            appClickStopPropagation
+            #fileinputModif
+            type="file"
+            class="d-none"
+            id="file"
+            formControlName="file"
+            (change)="addFile($event)"
+        />
+    </div>
+    <button [disabled]="modifyForm.invalid" (click)="modifyComment()" class="btn" type="submit">
+        Modifier
+    </button>
+    <p class="errorMsg" *ngIf="errorMsg">{{ errorMsg }}</p>
+</form>

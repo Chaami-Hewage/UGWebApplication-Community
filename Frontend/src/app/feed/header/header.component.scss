@@ -1,0 +1,66 @@
+@use "../../../styles/Utils/breakpoints" as *;
+@use "../../../styles/Utils/index" as *;
+
+.header-sticky {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 20;
+}
+
+nav {
+    height: 120px;
+    background-color: var(--background-white);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+    @include breakpoint(700px) {
+        padding: 10px;
+    }
+}
+
+.left-nav__logo {
+    width: 300px;
+
+    @include md {
+        width: 190px;
+    }
+
+    @include breakpoint(450px) {
+        width: 50px;
+    }
+}
+.middle-nav-insert-category {
+    @include lg {
+        display: none;
+    }
+}
+.right-nav__avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: 0 20px;
+    object-fit: cover;
+    cursor: pointer;
+    @include breakpoint(450px) {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.right-nav__logo {
+    display: flex;
+    align-items: center;
+    @include sm {
+        margin-right: 30px;
+    }
+}
+
+.burger {
+    color: var(--color_text-title);
+    display: none;
+    cursor: pointer;
+    // padding: 0 10px;
+
+    @include sm {
+        display: block;
+    }
+}

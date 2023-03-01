@@ -1,0 +1,89 @@
+<div class="modal-header">
+    <div class="modal-header__title d-flex flex-align-items-center flex-justify-content-between">
+        <h2 class="fs-40">sign up</h2>
+        <mat-icon aria-label="Close the window" (click)="closeTab()" class="cross">cancel</mat-icon>
+    </div>
+    <p class="modal-header__info fs-24 fw-300">it's quick and easy</p>
+</div>
+<hr class="w100 mb-30 mt-30" />
+
+<form class="modal-form" [formGroup]="signupForm">
+    <div class="modal-form__inline w100 d-flex">
+        <div class="form-group">
+            <label for="firstname"></label>
+            <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                placeholder="first name"
+                formControlName="firstname"
+                name="firstname"
+            />
+        </div>
+
+        <div class="form-group secondInput">
+            <label for="lastname"></label>
+            <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                placeholder="last name"
+                formControlName="lastname"
+                name="lastname"
+            />
+        </div>
+    </div>
+    <div class="errorMsg" *ngIf="firstname.errors?.['isNumeric'] || lastname.errors?.['isNumeric']">
+        This field must contain at least 2 letters and no numbers
+    </div>
+
+    <div class="form-group">
+        <label for="emailSignup"></label>
+        <input
+            type="email"
+            class="form-control"
+            id="emailSignup"
+            placeholder="Email Address"
+            formControlName="emailSignup"
+            name="emailSignup"
+        />
+    </div>
+
+    <div class="errorMsg" *ngIf="emailSignup.errors?.['emailMatch']">
+        The email address is not correct! (exemple@test.com)
+    </div>
+    <div class="modal-form__inline w100 d-flex">
+        <div class="form-group">
+            <label for="password"></label>
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="password"
+                formControlName="password"
+                name="password"
+            />
+        </div>
+        <div class="form-group">
+            <label for="passwordControl"></label>
+            <input
+                type="password"
+                class="form-control"
+                id="passwordControl"
+                placeholder="Confirm Password"
+                formControlName="passwordControl"
+                name="passwordControl"
+            />
+        </div>
+    </div>
+    <div class="errorMsg" *ngIf="password.errors?.['passwordStrength']">
+        The password must contain at least one uppercase, one lowercase and one digit
+    </div>
+    <div class="errorMsg" *ngIf="passwordControl.errors?.['passwordMismatch']">
+        Passwords do not match
+    </div>
+    <button [disabled]="signupForm.invalid" (click)="onSubmit()" type="submit" class="btn mt-10">
+        Create new account
+    </button>
+    <p class="errorMsg" *ngIf="errorMsg">{{ errorMsg }}</p>
+</form>

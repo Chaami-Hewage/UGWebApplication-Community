@@ -1,0 +1,24 @@
+@use "../../../styles/Utils/breakpoints" as *;
+
+
+.modal-header {
+    &__title {
+        h2 {
+            @include sm {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+.modal-form__inline {
+    gap: 10px;
+
+    @include breakpoint(600px) {
+        flex-direction: column;
+    }
+    .form-group {
+        width: 100%;
+    }
+}
+

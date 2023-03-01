@@ -1,0 +1,24 @@
+<section class="search-user">
+    <h1 class="search-user__title">Look for a colleague</h1>
+    <div class="search-user__field">
+        <label for="search-user"></label>
+        <input
+            placeholder="Who are you looking for? "
+            type="text"
+            id="search-user"
+            [(ngModel)]="filteredString"
+        />
+    </div>
+</section>
+
+<section>
+    <div class="user-card p-10 d-flex" *ngFor="let user of users | filter: filteredString">
+        <img class="user-card__image" [src]="user.imgUser" alt="Photo de profil de {{ user.lastname }}" />
+        <div class="user-card__header d-flex flex-column flex-justify-content-center fs-16">
+            <div class="user-card__header__text d-flex mb-20">
+                <p>{{ user.firstname | titlecase }} {{ user.lastname | titlecase }}</p>
+            </div>
+            <a href="mailto:{{ user.email }}">{{ user.email }} </a>
+        </div>
+    </div>
+</section>

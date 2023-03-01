@@ -1,0 +1,94 @@
+@use "../../../styles/Utils/breakpoints" as *;
+
+
+article {
+    margin: 0 10px;
+    word-wrap: break-word;
+}
+
+.comment-card {
+
+    &__image {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+.overflow {
+    flex-wrap: wrap;
+}
+.comment-card__content {
+    margin: 10px 0;
+    &__information {
+        background-color: var(--background-light);
+        border-radius: 10px;
+        position: relative;
+        width: fit-content;
+        max-width: 100%;
+
+        &__user {
+            color: var(--color_text-title);
+            padding: 5px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        &__content {
+            color: var(--text-post);
+            font-size: 14px;
+            padding: 5px;
+
+            .content__picture {
+                max-width: 200px;
+                height: 150px;
+                border-radius: 5px;
+                object-fit: cover;
+
+                @include sm {
+                    width: 100%;
+                }
+            }
+        }
+        &__like {
+            position: absolute;
+            right: -15px;
+            bottom: -12px;
+            width: 30px;
+            height: 30px;
+
+            img {
+                margin-right: 2px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
+
+.comment-card__footer {
+    justify-content: flex-start;
+    font-size: 12px;
+    gap: 10px;
+    padding: 5px;
+    position: relative;
+    span {
+        cursor: pointer;
+    }
+}
+
+.show-more-comments {
+    margin-left: 40px;
+    font-size: 16px;
+    color: var(--background-darkest);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.liked {
+    color: var(--secondary);
+    font-weight: 700;
+}

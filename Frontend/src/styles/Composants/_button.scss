@@ -1,0 +1,17 @@
+@use "../Utils/index" as *;
+
+.btn {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: var(--secondary);
+    color: var(--color_text-button);
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    background-color: var(--background-dark)
+}

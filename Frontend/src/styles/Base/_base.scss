@@ -1,0 +1,276 @@
+@use "../../styles/Utils/breakpoints" as *;
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+//--------------------------------------------
+
+:root {
+    --primary: #fd2d01;
+    --secondary: #093167;
+    --tertiary: #ffd7d7;
+    --background-white: #fff;
+    --background-light: #f6f6f6;
+    --background-dark: #eaeaea;
+    --background-darkest: #5c7d99;
+    --category-background: #fd2d01;
+    --color_text-title: #433a3a;
+    --color_text-button: #fff;
+    --input-background: #f6f6f6;
+    --alert: #ff0000;
+    --text-category: #433a3a;
+    --text-post: #433a3a;
+}
+
+html {
+    height: 100%;
+}
+//--------------------------------------------
+
+body {
+    color: var(--color_text-title);
+    background-color: var(--background-light);
+    font-family: "Roboto", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color_text-title);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.bodybg-color {
+    background-color: #fff;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: auto;
+    height: 100vh;
+    background-color: transparent;
+}
+
+.d-none {
+    display: none;
+}
+.d-flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-justify-content-center {
+    justify-content: center;
+}
+
+.flex-justify-content-between {
+    justify-content: space-between;
+}
+
+.flex-align-items-center {
+    align-items: center;
+}
+
+.flex-align-items-between {
+    align-items: space-between;
+}
+
+.flex-fill {
+    flex: 1 1 auto;
+}
+
+// utils
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+.maxW1440 {
+    max-width: 1440px;
+}
+
+.p-10 {
+    padding: 10px;
+}
+.p-15 {
+    padding: 15px;
+}
+.p-20 {
+    padding: 20px;
+}
+
+.p-30 {
+    padding: 30px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.m-20 {
+    margin: 20px;
+}
+
+.m-auto {
+    margin: 0 auto;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+.ml-0 {
+    margin-left: 0px;
+}
+.ml-5 {
+    margin-left: 5px;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.fw-300 {
+    font-weight: 300;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mb-50 {
+    margin-bottom: 30px;
+}
+
+.fs-40 {
+    font-size: 40px;
+}
+.fs-30 {
+    font-size: 30px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+.fs-20 {
+    font-size: 20px;
+}
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+.fs-10 {
+    font-size: 10px;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+input {
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    outline: none;
+    margin: 10px 0;
+    color: var(--background-darkest);
+    position: relative;
+}
+
+input::placeholder {
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 1px;
+    color: var(--background-darkest);
+}
+
+select {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: var(--background-darkest);
+}
+textarea {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    resize: none;
+    color: var(--background-darkest);
+}
+
+textarea::placeholder {
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 1px;
+    color: var(--background-darkest);
+}
+
+.errorMsg {
+    color: var(--alert);
+    font-size: 12px;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
