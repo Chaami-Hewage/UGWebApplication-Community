@@ -138,6 +138,12 @@ exports.login = async (req, res) => {
     if (!email || !password) {
         return res.status(400).json({error: "Please enter an email and a password"});
     } else {
+        let query = db.query(`
+                SELECT *
+                FROM users
+                WHERE email = $1`,
+            [email]);
+        console.log(query);
         db.query(
             `
                 SELECT *
@@ -145,17 +151,20 @@ exports.login = async (req, res) => {
                 WHERE email = $1`,
             [email],
             async (error, result) => {
+                const userId = result.rows[0].users_id;
+                const password1 = result.rows[0].password;
                 if (error) {
                     return res.status(500).json({error: "Your request could not be completed"});
                 }
-                if (!result[0]) {
+                if (!result) {
                     return res.status(403).json({error: "Email not recognized"});
                 } else {
-                    const userValid = await bcrypt.compare(password, result[0].password);
+                    const userValid = await bcrypt.compare(password, password1);
                     if (userValid) {
-                        const token = await jwt.createToken({sub: result[0].users_id});
+                        console.log(userId);
+                        const token = await jwt.createToken({sub: userId});
                         res.status(200).json({
-                            userId: result[0].users_id,
+                            userId: userId,
                             access_token: token,
                             token_type: "Bearer",
                             expires_in: jwtConfig.ttl,

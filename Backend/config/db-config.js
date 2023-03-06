@@ -13,15 +13,14 @@
 //
 // module.exports = db;
 
-const { Pool } = require('pg');
+const Pool = require('pg').Pool;
 
 const pool = new Pool({
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT,
-    database: process.env.DATABASE_NAME,
-    max: 10, // equivalent to connectionLimit
+    user: "UGWebapplication",
+    password: "Powerseekers",
+    database: "MainDatabase",
+    host: "ugwebapplication.ct4zszzqkuph.ap-northeast-1.rds.amazonaws.com",
+    port: 5432,
 });
 
 module.exports = pool;
